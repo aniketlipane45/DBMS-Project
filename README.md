@@ -1,14 +1,14 @@
-# Subscription Service Management
+ **Subscription Service Management**
 
-## **Project Overview**
+Project Overview
 This project is a database solution for managing subscriptions, payments, and service renewals. It includes features such as automated account suspension for non-payment, discount calculations based on subscription duration, and reminders for upcoming subscription expirations. Designed for subscription-based services, it ensures seamless operations with efficient data handling.
 
 ---
 
-## **Key Features**
+# Key Features
 
-### **1. Tables and Relationships**
-- **Users Table**:
+1. Tables and Relationships
+-Users Table:
   Stores user information such as name, email, and account status (e.g., Active, Suspended).
   ```sql
   CREATE TABLE Users (
@@ -19,7 +19,7 @@ This project is a database solution for managing subscriptions, payments, and se
   );
   ```
 
-- **Services Table**:
+- Services Table:
   Contains subscription plan details such as name and price.
   ```sql
   CREATE TABLE Services (
@@ -29,7 +29,7 @@ This project is a database solution for managing subscriptions, payments, and se
   );
   ```
 
-- **Subscriptions Table**:
+- Subscriptions Table:
   Links users to their subscribed services, along with start and end dates.
   ```sql
   CREATE TABLE Subscriptions (
@@ -43,7 +43,7 @@ This project is a database solution for managing subscriptions, payments, and se
   );
   ```
 
-- **Payments Table**:
+- Payments Table:
   Records payment history, including amounts and dates.
   ```sql
   CREATE TABLE Payments (
@@ -55,15 +55,15 @@ This project is a database solution for managing subscriptions, payments, and se
   );
   ```
 
-### **2. SQL Features Implemented**
-- **Data Insertions**:
+2. SQL Features Implemented
+- Data Insertions:
   Populated the database with sample data for users, services, subscriptions, and payments.
   ```sql
   INSERT INTO Users (user_id, user_name, email, status) VALUES
   (1, 'Alice Johnson', 'alice.johnson@example.com', 'Active');
   ```
 
-- **Query for Expiring Subscriptions**:
+- Query for Expiring Subscriptions:
   Retrieve subscriptions expiring within the next 7 days.
   ```sql
   SELECT u.user_name, u.email, s.service_name, sub.end_date
@@ -73,7 +73,7 @@ This project is a database solution for managing subscriptions, payments, and se
   WHERE sub.end_date BETWEEN CURRENT_DATE AND CURRENT_DATE + INTERVAL '7' DAY;
   ```
 
-- **Trigger for Account Suspension**:
+- Trigger for Account Suspension:
   Automatically suspends accounts after 30 days of non-payment.
   ```sql
   CREATE OR REPLACE TRIGGER suspend_account_after_non_payment
@@ -92,7 +92,7 @@ This project is a database solution for managing subscriptions, payments, and se
   END;
   ```
 
-- **Function for Discount Calculation**:
+- Function for Discount Calculation:
   Calculates discounts based on subscription duration.
   ```sql
   CREATE OR REPLACE FUNCTION calculate_discount(p_user_id INT) RETURN NUMBER IS
@@ -115,7 +115,7 @@ This project is a database solution for managing subscriptions, payments, and se
   END;
   ```
 
-- **Trigger for Auto-renewal**:
+- Trigger for Auto-renewal:
   Automatically renews subscriptions after payment.
   ```sql
   CREATE OR REPLACE TRIGGER auto_renew_subscription
@@ -136,20 +136,20 @@ This project is a database solution for managing subscriptions, payments, and se
 
 ---
 
-## **How to Run**
+How to Run
 
-1. **Database Setup**:
+1. Database Setup:
    - Use an Oracle database instance.
    - Execute the table creation scripts in the order: `Users`, `Services`, `Subscriptions`, `Payments`.
 
-2. **Insert Sample Data**:
+2. Insert Sample Data:
    - Use the provided `INSERT` statements to populate tables with test data.
 
-3. **Test Queries and Triggers**:
+3. Test Queries and Triggers:
    - Run the provided queries and observe results.
    - Verify triggers by adding new payments or testing expired subscriptions.
 
-4. **Functions**:
+4. Functions:
    - Test the `calculate_discount` function by passing a valid user ID.
    - Example:
      ```sql
@@ -158,16 +158,16 @@ This project is a database solution for managing subscriptions, payments, and se
 
 ---
 
-## **Contributing**
+Contributing
 Contributions are welcome! Feel free to fork this repository, make changes, and submit a pull request.
 
 ---
 
-## **License**
+License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
-## **Contact**
+Contact
 For any queries or suggestions, reach out to [aniketlipane12345@gmail.com](mailto:aniketlipane12345@gmail.com).
 
